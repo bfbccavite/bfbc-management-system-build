@@ -46,6 +46,7 @@ export async function updateSession(request: NextRequest) {
   const { pathname } = request.nextUrl
   const isPublic =
     pathname.startsWith('/auth') ||
+    pathname.startsWith('/setup') ||
     pathname === '/favicon.ico'
 
   if (!user && !isPublic) {

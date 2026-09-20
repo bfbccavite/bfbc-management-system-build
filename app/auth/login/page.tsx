@@ -1,7 +1,11 @@
+import { redirect } from "next/navigation"
 import { LoginForm } from "@/components/auth/login-form"
+import { setupNeeded } from "@/app/setup/actions"
 import { Church } from "lucide-react"
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  if (await setupNeeded()) redirect("/setup")
+
   return (
     <main className="flex min-h-svh flex-col items-center justify-center gap-6 bg-sidebar p-6 md:p-10">
       <div className="flex w-full max-w-sm flex-col gap-6">
